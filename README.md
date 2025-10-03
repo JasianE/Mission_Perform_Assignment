@@ -14,10 +14,6 @@ A single-page application (SPA) for managing tasks. Built with React and Express
 
 ---
 
- 
-
----
-
 ## Setup Instructions
 
 ### 1. Clone the repository
