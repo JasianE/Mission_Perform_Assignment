@@ -8,7 +8,6 @@ import Form from "./Form";
 
 const TaskList = () => {
     const [todos, setTodos] = useState<Task[]>([]);
-    const [causeRefresh, setCauseRefresh] = useState(0);
     
     useEffect(() => { // Fetch all todos and set them in state
         GetAllTodos()
@@ -18,7 +17,7 @@ const TaskList = () => {
         .catch((err) => {
             console.log(err)
         })
-    }, [causeRefresh])
+    }, [])
 
     const refreshState = (id: string) => {
         setTodos(prev => prev.filter(task => task._id !== id));

@@ -1,5 +1,4 @@
 import Task from "../models/Task.model.js";
-import mongoose from "mongoose";
 
 export async function CreateTask(req, res, next){
     try {

@@ -12,7 +12,7 @@ const taskSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ["To Do", "In Progress", "Done"], // uses enumerable property
+    enum: ["To Do", "In Progress", "Done"], // ensures its one of these three values
     default: "To Do"
   },
   createdAt: {
