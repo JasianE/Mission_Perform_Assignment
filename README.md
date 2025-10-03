@@ -23,6 +23,7 @@ git clone git@github.com:JasianE/Mission_Perform_Assignment.git
 
 ### 2. Install packages
 ```bash
+cd Mission_perform_Assignment       # --> Enters folder containing project
 cd backend                          # --> enters backend folder
 npm install                         # --> installs necessary packages for backend
 cd ../                              # --> returns to main folder
