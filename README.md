@@ -45,6 +45,7 @@ MONGO_URI=mongodb+srv://mission_perform:Password123@cluster0.wrnrs.mongodb.net/?
 ```bash
 cd front_end                        # --> Enter front_end folder
 npm run dev                         # --> Starts development server for react on localhost:5173
+# NOTE THIS WILL TURN THE TERMINAL TO AN OUTPUT FOR THE DEV SERVER. YOU WILL NEED TO OPEN ANOTHER WINDOW AND FIND THE PATH AGAIN.
 cd ../                              # --> Returns to previous folder
 cd backend                          # --> Enter backend folder
 npm run start                       # --> Begins express server on localhost:3000
