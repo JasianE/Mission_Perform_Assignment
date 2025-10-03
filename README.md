@@ -52,7 +52,7 @@ npm run start                       # --> Begins express server on localhost:300
 ```
 
 ### 5. Access App Locally
-Enter http://localhost:3000 on your browser of choice. Enjoy! :)
+Enter http://localhost:5173 on your browser of choice. Enjoy! :)
 
 
 
