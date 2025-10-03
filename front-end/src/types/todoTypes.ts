@@ -1,20 +1,24 @@
 export type CreateTaskParams = {
   title: string;
   description: string;
-  status?: "Pending" | "In Progress" | "Completed";
+  status?: "To Do" | "In Progress" | "Done";
 };
 
 export interface Task {
   _id: string;
   title: string;
   description: string;
-  status: "Pending" | "In Progress" | "Completed";
+  status: "To Do" | "In Progress" | "Done";
   createdAt: string;
 }
 
 export interface TaskCardProps {
   task: Task;
-  onEdit: (task: Task) => void;
+  onEdit: (id: string, task: Task) => void;
   onDelete: (id: string) => void;
-  onStatusChange: (id: string, status: Task["status"]) => void;
+  refreshState: (id: string) => void;
+}
+
+export interface FormProps {
+    handleTaskCreated: (task: Task) => void;
 }

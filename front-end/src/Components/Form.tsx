@@ -1,11 +1,12 @@
 import React, { useState, type FormEvent } from "react";
 import { Create_Todo } from "../services/todo.service";
 import type { CreateTaskParams } from "../types/todoTypes";
+import type { FormProps } from "../types/todoTypes";
 
-function Form(){
+const Form: React.FC<FormProps> = ({handleTaskCreated}) =>{
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [status, setStatus] = useState<CreateTaskParams['status']>("Pending");
+    const [status, setStatus] = useState<CreateTaskParams['status']>("To Do");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
@@ -19,7 +20,9 @@ function Form(){
 
             setTitle("");
             setDescription("");
-            setStatus("Pending");
+            setStatus("In Progress");
+
+            handleTaskCreated(new_task);
         } catch(err : any){
             console.log(err);
         } finally {
@@ -40,7 +43,6 @@ function Form(){
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        required
       />
       <select
         value={status}
@@ -48,9 +50,9 @@ function Form(){
             setStatus(e.target.value as CreateTaskParams["status"]);
         }}
       >
-        <option value="Pending">Pending</option>
+        <option value="To Do">To Do</option>
         <option value="In Progress">In Progress</option>
-        <option value="Completed">Completed</option>
+        <option value="Done">Done</option>
       </select>
       <button type="submit" disabled={loading}>
         {loading ? "Adding..." : "Add Task"}

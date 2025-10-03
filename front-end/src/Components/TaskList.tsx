@@ -1,10 +1,14 @@
 import React, {useEffect, useState} from "react";
 import { GetAllTodos } from "../services/todo.service";
+import { UpdateTodo, DeleteTodo, } from "../services/todo.service";
+import type { Task } from "../types/todoTypes";
 
 import TaskCard from "./TaskCard";
+import Form from "./Form";
 
-function TaskList(){
-    const [todos, setTodos] = useState([]);
+const TaskList = () => {
+    const [todos, setTodos] = useState<Task[]>([]);
+    const [causeRefresh, setCauseRefresh] = useState(0);
     
     useEffect(() => { // Fetch all todos and set them in state
         GetAllTodos()
@@ -14,13 +18,22 @@ function TaskList(){
         .catch((err) => {
             console.log(err)
         })
-    }, [])
+    }, [causeRefresh])
+
+    const refreshState = (id: string) => {
+        setTodos(prev => prev.filter(task => task._id !== id));
+    }
+
+    const handleTaskCreated = (newTask: Task) => {
+        setTodos(prev => [...prev, newTask]); // add task instantly
+    };
 
     return(
         <div>
+            <Form handleTaskCreated = {handleTaskCreated}/>
             {todos.map((element) => {
                 return(
-                    <TaskCard task={element} />
+                    <TaskCard task={element} onEdit={UpdateTodo} onDelete={DeleteTodo} refreshState={refreshState} key={element._id}/>
                 )
             })}
         </div>

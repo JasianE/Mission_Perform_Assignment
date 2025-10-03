@@ -41,5 +41,44 @@ export async function GetAllTodos() {
 }
 
 export async function DeleteTodo(id: String){
+    //Deletes todo, used in taskcard 
+    try {
+        const response = await fetch(`http://localhost:3000/delete/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
 
+        if(!response.ok){
+            const errData = await response.json();
+            throw new Error(errData.err || "Something went wrong")
+        }
+
+        return response.json();
+    } catch(err){
+        console.log(err);
+    }
+}
+
+export async function UpdateTodo(id: string, body: CreateTaskParams) {
+  try {
+    const response = await fetch(`http://localhost:3000/update/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      const errData = await response.json();
+      throw new Error(errData.error || "Something went wrong while updating");
+    }
+
+    return await response.json();
+  } catch (err) {
+    console.error("UpdateTodo error:", err);
+    throw err;
+  }
 }
