@@ -34,8 +34,8 @@ npm install                         # --> installs necessary packages for front-
 ### 3. Create .ENV file
 ```bash
 cd ../                              # --> Returns to main folder
-touch .env                          # --> Creates .env file, (if on windows skip to ./code and press create new file and add .env directly.)
-./code                              # --> Opens up code editor
+touch .env                          # --> Creates .env file, (if on windows skip to code ./ and press create new file and add .env directly.)
+code ./                             # --> Opens up code editor
 #Now add the following two lines:
 PORT=3000
 MONGO_URI=mongodb+srv://mission_perform:Password123@cluster0.wrnrs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
