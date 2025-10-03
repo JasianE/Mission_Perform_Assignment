@@ -33,6 +33,7 @@ npm install                         # --> installs necessary packages for front-
 
 ### 3. Create .ENV file
 ```bash
+cd ../                              # --> Returns to main folder
 touch .env                          # --> Creates .env file
 ./code                              # --> Opens up code editor
 #Now add the following two lines:
