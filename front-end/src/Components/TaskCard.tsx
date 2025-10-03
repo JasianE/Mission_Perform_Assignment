@@ -8,17 +8,17 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onEdit, onDelete, refreshStat
   const [description, setDescription] = useState(task.description);
   const [status, setStatus] = useState(task.status);
 
-  // NEW: state to toggle editing mode
-  const [editing, setEditing] = useState(false); // <-- added
+ 
+  const [editing, setEditing] = useState(false); 
 
-  // NEW: handle save function
-  const handleSave = () => { // <-- added
+  
+  const handleSave = () => { 
     onEdit(task._id, { ...task, title, description, status });
     setEditing(false);
   };
   return (
     <div className="task-card">
-      {editing ? ( // <-- added: show inputs when editing
+      {editing ? ( 
         <>
           <input
             className="task-title"
@@ -33,7 +33,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onEdit, onDelete, refreshStat
           <p className="task-status">
             <strong>Status:</strong>
             <select
-              value={status} // <-- changed from task.status to state
+              value={status} 
               onChange={(e) => setStatus(e.target.value as Task["status"])}
               className="task-select"
             >
@@ -42,20 +42,20 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onEdit, onDelete, refreshStat
               <option value="Done">Done</option>
             </select>
           </p>
-          <button className="task-btn save" onClick={handleSave}>Save</button> {/* <-- added */}
-          <button className="task-btn cancel" onClick={() => setEditing(false)}>Cancel</button> {/* <-- added */}
+          <button className="task-btn save" onClick={handleSave}>Save</button> 
+          <button className="task-btn cancel" onClick={() => setEditing(false)}>Cancel</button> 
         </>
-      ) : ( // <-- added: normal display
+      ) : ( 
         <>
           <h3 className="task-title">{title}</h3>
           <p className="task-desc">{description}</p>
           <p className="task-status">
-            <strong>Status:</strong>{status} {/* <-- changed from task.status to state */}
+            <strong>Status:</strong>{status} 
             <select
-              value={status} // <-- changed from task.status to state
+              value={status} 
               onChange={(e) =>  {
-                setStatus(e.target.value as Task["status"]); // <-- changed
-                onEdit(task._id, { ...task, status: e.target.value as Task["status"] }); // <-- changed
+                setStatus(e.target.value as Task["status"]); 
+                onEdit(task._id, { ...task, status: e.target.value as Task["status"] }); 
               }}
               className="task-select"
             >
@@ -68,7 +68,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onEdit, onDelete, refreshStat
             <small>Created: {new Date(task.createdAt).toLocaleString()}</small>
           </p>
           <div className="task-buttons">
-            <button className="task-btn edit" onClick={() => setEditing(true)}>Edit</button> {/* <-- changed */}
+            <button className="task-btn edit" onClick={() => setEditing(true)}>Edit</button> 
             <button className="task-btn delete" onClick={() => {
                 onDelete(task._id);
                 refreshState(task._id);
