@@ -20,7 +20,7 @@ const Form: React.FC<FormProps> = ({handleTaskCreated}) =>{
 
             setTitle("");
             setDescription("");
-            setStatus("In Progress");
+            setStatus("To Do");
 
             handleTaskCreated(new_task);
         } catch(err : any){
